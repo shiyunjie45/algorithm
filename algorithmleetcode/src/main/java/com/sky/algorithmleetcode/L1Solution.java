@@ -1,7 +1,6 @@
 package com.sky.algorithmleetcode;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  *给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target 的那 两个 整数，并返回它们的数组下标。
@@ -52,22 +51,53 @@ class L1Solution {
     }
 
     public static void main(String[] args){
-        int[] numArr = new int[5000];
+//        int[] numArr = new int[5000];
+//        for (int i = 0; i < numArr.length; i++) {
+//            numArr[i]=i;
+//        }
+        // 生成随机数组和目标值
+        int length = 6000;
+        int[] numArr = generateRandomArray(length, 0, Integer.MAX_VALUE);
+        List<Integer> targetList = new ArrayList<>();
+        Random random = new Random();
         for (int i = 0; i < numArr.length; i++) {
-            numArr[i]=i;
+            targetList.add(random.nextInt(Integer.MAX_VALUE));
         }
         long startTime = System.currentTimeMillis();
-        for (int i = 0; i < numArr.length*2; i++) {
-            twoSum1(numArr,i);
+        for (int i = 0; i < targetList.size(); i++) {
+            twoSum1(numArr,targetList.get(i));
         }
         System.out.println("twoSum1耗时"+(System.currentTimeMillis()-startTime));
 
         startTime = System.currentTimeMillis();
-        for (int i = 0; i < numArr.length*2; i++) {
-            twoSum2(numArr,i);
+
+
+        for (int i = 0; i < targetList.size(); i++) {
+            twoSum2(numArr,targetList.get(i));
         }
         System.out.println("towSum2耗时"+(System.currentTimeMillis()-startTime));
     }
 
-
+    //一下代码由chatGpt生成
+    // 生成指定长度、随机元素在指定范围内的整数数组
+    private static int[] generateRandomArray(int length, int min, int max) {
+        Random random = new Random();
+        int[] nums = new int[length];
+        for (int i = 0; i < length; i++) {
+            nums[i] = random.nextInt((max - min + 1)>0?max - min + 1:Integer.MAX_VALUE) + min;
+        }
+        return nums;
+    }
+    // 将整型数组转成字符串形式
+    private static String arrayToString(int[] nums) {
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < nums.length; i++) {
+            sb.append(nums[i]);
+            if (i != nums.length - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
 }
