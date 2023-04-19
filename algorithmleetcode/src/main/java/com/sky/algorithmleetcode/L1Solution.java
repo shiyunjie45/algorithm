@@ -78,7 +78,7 @@ class L1Solution {
         System.out.println("towSum2耗时"+(System.currentTimeMillis()-startTime));
     }
 
-    //一下代码由chatGpt生成
+    //以下代码由chatGpt生成
     // 生成指定长度、随机元素在指定范围内的整数数组
     private static int[] generateRandomArray(int length, int min, int max) {
         Random random = new Random();
