@@ -154,23 +154,23 @@ public class L2Solution {
     }
 
     public static void main(String[] args){
-        int[] arr1 = {8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,0,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8};
-        int[] arr2 = {6,7,8,0,8,5,8,9,7,6,5,3,8,4,5,6,7,8,9,0,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8,8,6,5,6,8,3,5,7,8,9,1,2,3,4,5,6,7,8};
+        int[] arr1 = Utils.generateRandomArray(2000,1,9);
+        int[] arr2 = Utils.generateRandomArray(3508,1,9);
         ListNode listNode1 = arrToListNode(arr1);
         ListNode listNode2 = arrToListNode(arr2);
         ListNode firstListNode1 = listNode1;
         ListNode firstListNode2 = listNode2;
-        long startTime = System.currentTimeMillis();
-        ListNode listNode = addTwoNumbers1(firstListNode1,firstListNode2);
+        Utils utils = new Utils();
+        ListNode listNode;
+        //方法1健壮性较差,使用了递归的方法
+        listNode = addTwoNumbers1(firstListNode1,firstListNode2);
         System.out.print(listNode.val);
         while (listNode.next!=null){
             listNode = listNode.next;
             System.out.print(listNode.val);
         }
         System.out.println();
-        System.out.println("addTwoNumbers1耗时:"+(System.currentTimeMillis()-startTime));
-
-        startTime = System.currentTimeMillis();
+        utils.printTimeConsuming("addTwoNumbers1耗时:");
         listNode = addTwoNumbers2(firstListNode1,firstListNode2);
         System.out.print(listNode.val);
         while (listNode.next!=null){
@@ -178,7 +178,7 @@ public class L2Solution {
             System.out.print(listNode.val);
         }
         System.out.println();
-        System.out.println("addTwoNumbers2耗时:"+(System.currentTimeMillis()-startTime));
+        utils.printTimeConsuming("addTwoNumbers2耗时:");
     }
 
 

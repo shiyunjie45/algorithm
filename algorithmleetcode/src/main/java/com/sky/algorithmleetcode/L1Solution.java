@@ -51,10 +51,6 @@ class L1Solution {
     }
 
     public static void main(String[] args){
-//        int[] numArr = new int[5000];
-//        for (int i = 0; i < numArr.length; i++) {
-//            numArr[i]=i;
-//        }
         // 生成随机数组和目标值
         int length = 6000;
         int[] numArr = Utils.generateRandomArray(length, 0, Integer.MAX_VALUE);
@@ -63,18 +59,14 @@ class L1Solution {
         for (int i = 0; i < numArr.length; i++) {
             targetList.add(random.nextInt(Integer.MAX_VALUE));
         }
-        long startTime = System.currentTimeMillis();
+        Utils utils = new Utils();
         for (int i = 0; i < targetList.size(); i++) {
             twoSum1(numArr,targetList.get(i));
         }
-        System.out.println("twoSum1耗时"+(System.currentTimeMillis()-startTime));
-
-        startTime = System.currentTimeMillis();
-
-
+        utils.printTimeConsuming();
         for (int i = 0; i < targetList.size(); i++) {
             twoSum2(numArr,targetList.get(i));
         }
-        System.out.println("towSum2耗时"+(System.currentTimeMillis()-startTime));
+        utils.printTimeConsuming();
     }
 }

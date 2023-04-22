@@ -1,41 +1,41 @@
 package com.sky.algorithmleetcode;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 /**
- 给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。请你找出并返回这两个正序数组的 中位数 。
+ 给定一个字符串 s ，请你找出其中不含有重复字符的 最长子串 的长度。
 
- 算法的时间复杂度应该为 O(log (m+n)) 。
+ 示例 1:
 
- 示例 1：
+ 输入: s = "abcabcbb"
+ 输出: 3
+ 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+ 示例 2:
 
- 输入：nums1 = [1,3], nums2 = [2]
- 输出：2.00000
- 解释：合并数组 = [1,2,3] ，中位数 2
- 示例 2：
+ 输入: s = "bbbbb"
+ 输出: 1
+ 解释: 因为无重复字符的最长子串是 "b"，所以其长度为 1。
+ 示例 3:
 
- 输入：nums1 = [1,2], nums2 = [3,4]
- 输出：2.50000
- 解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
+ 输入: s = "pwwkew"
+ 输出: 3
+ 解释: 因为无重复字符的最长子串是 "wke"，所以其长度为 3。
+ 请注意，你的答案必须是 子串 的长度，"pwke" 是一个子序列，不是子串。
  提示：
 
- nums1.length == m
- nums2.length == n
- 0 <= m <= 1000
- 0 <= n <= 1000
- 1 <= m + n <= 2000
- -106 <= nums1[i], nums2[i] <= 106
+ 0 <= s.length <= 5 * 104
+ s 由英文字母、数字、符号和空格组成
  Related Topics
- 数组
- 二分查找
- 分治
-
- 👍 6453
- 👎 0
+ 哈希表
+ 字符串
+ 滑动窗口
 
  */
 public class L3Solution {
+
     public static int lengthOfLongestSubstring1(String str,int preLen){
         HashSet hashSet=new HashSet<>();
         int len = 0;
@@ -118,17 +118,28 @@ public class L3Solution {
     }
 
     public static void main(String[] args){
-        String str = "abcdefghijklmnopqrstuvwxyz0.123456789/*-+~!@#$%^&*()_+";
+        List<String> strings = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) {
+            //生成随机字符串,可能重复
+            strings.add(Utils.generateRandomString(i));
+            //生成不重复长度字符串
+            strings.add(Utils.generateRandomNonRepeatingString(i));
+        }
         Utils utils = new Utils();
-        System.out.println(lengthOfLongestSubstring1(str,0));
+        //方法1使用了递归的方法,次数多了以后会报错
+//        for (int i = 0; i < strings.size(); i++) {
+//            lengthOfLongestSubstring1(strings.get(i),0);
+//        }
+//        utils.printTimeConsuming();
+
+        for (int i = 0; i < strings.size(); i++) {
+            lengthOfLongestSubstring2(strings.get(i));
+        }
         utils.printTimeConsuming();
 
-        utils.setStartTime();
-        System.out.println(lengthOfLongestSubstring2(str));
-        utils.printTimeConsuming();
-
-        utils.setStartTime();
-        System.out.println(lengthOfLongestSubstring3(str));
+        for (int i = 0; i < strings.size(); i++) {
+            lengthOfLongestSubstring3(strings.get(i));
+        }
         utils.printTimeConsuming();
     }
 }
