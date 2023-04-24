@@ -1,4 +1,4 @@
-package com.sky.algorithmleetcode;
+package com.sky.algorithmleetcode.utils;
 
 import java.util.*;
 
@@ -41,7 +41,7 @@ public class Utils {
      * @param max 数组中元素的最大值
      * @return
      */
-    static int[] generateRandomArray(int length, int min, int max) {
+    public static int[] generateRandomArray(int length, int min, int max) {
         Random random = new Random();
         int[] nums = new int[length];
         for (int i = 0; i < length; i++) {
@@ -57,7 +57,7 @@ public class Utils {
      * @param max 数组中元素的最大值
      * @return
      */
-    static int[] generateRandomSortedArray(int size, int min, int max) {
+    public static int[] generateRandomSortedArray(int size, int min, int max) {
         Random rand = new Random();
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
@@ -73,7 +73,7 @@ public class Utils {
      * @param nums
      * @return
      */
-    static String arrayToString(int[] nums) {
+    public static String arrayToString(int[] nums) {
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < nums.length; i++) {
             sb.append(nums[i]);
@@ -92,7 +92,7 @@ public class Utils {
      * @param length
      * @return
      */
-    static String generateRandomString(int length) {
+    public static String generateRandomString(int length) {
         Random rand = new Random();
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
@@ -112,7 +112,7 @@ public class Utils {
      * @param length
      * @return
      */
-    static String generateRandomNonRepeatingString(int length) {
+    public static String generateRandomNonRepeatingString(int length) {
         if (length < 0 || length > CHARACTERS.length() + (0x9fa5 - 0x4e00 + 1)) {
             throw new IllegalArgumentException("Length must be between 0 and the maximum number of unique characters");
         }
