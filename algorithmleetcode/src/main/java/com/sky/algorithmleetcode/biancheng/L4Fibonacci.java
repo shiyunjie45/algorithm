@@ -10,7 +10,7 @@ package com.sky.algorithmleetcode.biancheng;
  * @className Fibonacci
  * @createdTime 2023/4/25 0:11
  */
-public class Fibonacci {
+public class L4Fibonacci {
     static int fibonacci(int num1,int num2){
         if (num1+num2>10000000){
             return 0;
