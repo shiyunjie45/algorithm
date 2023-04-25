@@ -28,6 +28,7 @@ public class L4Fibonacci {
     }
 
     // n 表示求数列中第 n 个位置上的数的值
+    //时间复杂度 O(2^n) 空间复杂度 O(n)
     public static int fibonacci(int n) {
         // 设置结束递归的限制条件
         if (n == 1 || n == 2) {
