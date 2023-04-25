@@ -3,7 +3,7 @@ package com.sky.algorithmleetcode.biancheng;
 /**
  * @author syj
  * @version V1.0.0
- * @contact shiyunjie45@163.com
+ * @contact jiejie12530@163.com
  * <ul>
  * @description 生成斐波那契数列的函数
  * </ul>
