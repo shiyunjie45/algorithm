@@ -1,9 +1,6 @@
 package com.sky.algorithmleetcode.biancheng;
 
-import com.sky.algorithmleetcode.utils.Utils;
-
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * 既分治算法和贪心算法之后，本节再给您介绍一种常用的算法——动态规划算法。
@@ -45,30 +42,46 @@ import java.util.Random;
  * 表 1 中借助 f(0) 和 f(1) 的值，依次推导出了 f(2)~f(15) 的值。因此，我们可以很容易得出“拼凑总面值为 15 只需要 7+7+1 共 3 个硬币”的最佳解决方案，这样解决问题的方法就称为动态规划算法。
  */
 public class L10Solution {
+    static class Result{
+        boolean match = false;
+        int cnt = 0;
 
-    public static int getMinCombination(int[] moneyCombination,int target){
-        int min = -1;
+        int min = 0;
+    }
+
+    public static Result getMinCombination(int[] moneyCombination,int target,Result result){
+//        HashSet<Integer> hashSet = new HashSet<>();
+//        for (int i = 0; i < moneyCombination.length; i++) {
+//            hashSet.add(moneyCombination[i]);
+//        }
         for (int i = 0; i < moneyCombination.length; i++) {
-            int cnt = 0;
-            if (target - moneyCombination[i]>0) {
-                int res = getMinCombination(moneyCombination,target-moneyCombination[i]);
-                if (res>-1){
-                    cnt = res +1;
-                }else{
-                    continue;
+            Result result1 = new Result();
+            getMinCombination2(moneyCombination,target,result1);
+        }
+
+        return result;
+    }
+
+    public static Result getMinCombination2(int[] moneyCombination,int target,Result result){
+        int[] arr = moneyCombination;
+        for (int i = 0; i < arr.length; i++) {
+            if (target - arr[i]==0) {
+                if (result.min==0||result.min>result.cnt+1){
+                    result.min= result.cnt+1;
                 }
-            } else if (target - moneyCombination[i]==0) {
-                return cnt+1;
-            }else{
-                continue;
-            }
-            if (cnt>-1){
-                if (-1==min||min>cnt){
-                    min = cnt;
+                result.match=true;
+            }else if (target - arr[i]>0) {
+                result = getMinCombination(arr,target-arr[i],result);
+                if (result.match){
+                    result.cnt = result.cnt + 1;
+                    if (result.min==0||result.min>result.cnt+1){
+                        result.min= result.cnt+1;
+                    }
+                    result.match = true;
                 }
             }
         }
-        return min;
+        return result;
     }
 
 
@@ -86,9 +99,9 @@ public class L10Solution {
                 }
             }
         }
-        System.out.println("最少硬币数量: " + dp[amount]);
-        System.out.print("硬币组合: ");
-        while (amount > 0) {
+        System.out.println("getMinCombination2最少硬币数量: " + dp[amount]);
+        System.out.print("getMinCombination2硬币组合: ");
+        while (amount > 0&&path[amount]>0) {
             System.out.print(path[amount] + " ");
             amount -= path[amount];
         }
@@ -114,20 +127,29 @@ public class L10Solution {
     }
 
     public static void main(String[] args) {
-        int[] coins = Utils.generateRandomArray(5,1,20);
-        Random random = new Random();
-        int target = random.nextInt(100);
+//      硬币值为:[2, 13, 14, 1, 1]
+//      目标金额:72
+//      疑似会卡死
+//        int[] coins = Utils.generateRandomArray(5,1,20);
+//        Random random = new Random();
+//        int target = random.nextInt(100);
+
+        int[] coins = {2, 13, 14, 1, 1};
+        int target = 72;
 
         System.out.println("硬币值为:"+Arrays.toString(coins));
         System.out.println("目标金额:"+target);
-        System.out.println("最少硬币数量:"+getMinCombination(coins,target));
+        Result result = new Result();
+        System.out.println("getMinCombination最少硬币数量:"+getMinCombination(coins,target,result).min);
+
+
         getMinCombination2(coins,target);
 
         int[] memo = new int[target + 1];;
         int[] path = new int[target + 1];;
-        int result = coinChange(coins, target,memo,path);
-        System.out.println("最少硬币数量: " + result);
-        System.out.print("硬币组合: ");
+        int result1 = coinChange(coins, target,memo,path);
+        System.out.println("coinChange最少硬币数量: " + result1);
+        System.out.print("coinChange硬币组合: ");
         while (target > 0) {
             System.out.print(path[target] + " ");
             target -= path[target];

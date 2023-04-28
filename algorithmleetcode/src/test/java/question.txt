@@ -1,0 +1,33 @@
+//以下程序是否会死锁?请优化这段代码
+public static int getMinCombination(int[] moneyCombination,int target){
+    HashSet<Integer> hashSet = new HashSet<>();
+    for (int i = 0; i < moneyCombination.length; i++) {
+        hashSet.add(moneyCombination[i]);
+    }
+    int[] arr = hashSet.stream().mapToInt(Integer::intValue).toArray();
+    int min = -1;
+    for (int i = 0; i < arr.length; i++) {
+        int cnt = 0;
+        if (target - arr[i]>0) {
+            int res = getMinCombination(arr,target-arr[i]);
+            if (res>-1){
+                cnt = res +1;
+            }else{
+                continue;
+            }
+        } else if (target - arr[i]==0) {
+            return cnt+1;
+        }else{
+            continue;
+        }
+        if (cnt>-1){
+            if (-1==min||min>cnt){
+                min = cnt;
+            }
+        }
+    }
+    return min;
+}
+//实测如下参数会卡死
+//int[] coins = {2, 13, 14, 1, 1};
+//int target = 72;
