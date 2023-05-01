@@ -8,8 +8,8 @@ package com.sky.algorithmleetcode;
 s的元素取值为 {1, 2, 3} 之一。 	answer的元素取值为 {1, 2, 3} 之一。
 */
 
- class LCP01Solution {
-    public int game(int[] guess, int[] answer) {
+public class LCP01Solution {
+    public static int game(int[] guess, int[] answer) {
         int count = 0;
         for (int i = 0; i < 3; i++) {
             if (guess[i] == answer[i]) {
@@ -17,5 +17,10 @@ s的元素取值为 {1, 2, 3} 之一。 	answer的元素取值为 {1, 2, 3} 之�
             }
         }
         return count;
+    }
+
+    public static void main(String[] args){
+        int[] guess={2,3,1}, answer={2,1,1};
+        System.out.println("猜对了:"+game(guess, answer)+"次");
     }
 } 
