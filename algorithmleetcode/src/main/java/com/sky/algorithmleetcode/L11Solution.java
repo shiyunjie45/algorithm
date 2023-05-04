@@ -7,7 +7,7 @@ package com.sky.algorithmleetcode;
 ,3,7] 输出：49
 */
 
- class L11Solution {
+public class L11Solution {
     public int maxArea(int[] height) {
         int maxArea = 0;
         int i = 0;

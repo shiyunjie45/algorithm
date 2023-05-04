@@ -12,7 +12,7 @@ X" 示例 4: 输入: 58 输出: "LVIII" 解释: L = 50, V = 5, III = 3.  示�
 XCIV" 解释: M = 1000, CM = 900, XC = 90, IV = 4.
 */
 
- class L12Solution {
+public class L12Solution {
     public String intToRoman(int num) {
         int[] values = {
             1000, 900, 500, 400,
