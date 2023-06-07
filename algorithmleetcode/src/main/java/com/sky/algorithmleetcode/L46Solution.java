@@ -5,7 +5,8 @@ package com.sky.algorithmleetcode;
   [2,3,1],  [3,1,2],  [3,2,1] ]
 */
 
- java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class L46Solution {
     
