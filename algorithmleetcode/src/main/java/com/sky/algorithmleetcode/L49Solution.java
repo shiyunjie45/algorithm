@@ -6,11 +6,7 @@ package com.sky.algorithmleetcode;
 均为小写字母。 	不考虑答案输出的顺序。
 */
 
- java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class L49Solution {
     public List<List<String>> groupAnagrams(String[] strs) {

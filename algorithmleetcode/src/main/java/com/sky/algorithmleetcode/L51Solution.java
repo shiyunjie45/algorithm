@@ -8,7 +8,11 @@ n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，�
 就是“吃子”。当她遇见可以吃的棋子时，就迅速冲上去吃掉棋子。当然，她横、竖、斜都可走一或七步，可进可退。（引用自 百度百科 - 皇后 ）
 */
 
- class L51Solution {
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+class L51Solution {
     private List<List<String>> res;
 
     public List<List<String>> solveNQueens(int n) {

@@ -6,7 +6,9 @@ package com.sky.algorithmleetcode;
 5]] 解释: 区间 [1,4] 和 [4,5] 可被视为重叠区间。
 */
 
- java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class L56Solution {
     public int[][] merge(int[][] intervals) {

@@ -8,7 +8,7 @@ package com.sky.algorithmleetcode;
 4, 1],  [12, 6, 8, 9],  [16, 7,10,11] ]
 */
 
- L48Solution {
+class L48Solution {
     public void rotate(int[][] matrix) {
         int n = matrix.length;
 

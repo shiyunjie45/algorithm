@@ -7,7 +7,7 @@ package com.sky.algorithmleetcode;
 ],[3,10],[12,16]] 解释: 这是因为新的区间 [4,8] 与 [3,5],[6,7],[8,10] 重叠。
 */
 
- java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class L57Solution {
